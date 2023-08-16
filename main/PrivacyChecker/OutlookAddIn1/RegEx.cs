@@ -18,7 +18,7 @@ namespace OutlookAddIn1
 
 
         #region Betreff überprüfen
-        //TODO: Email-Betreff prüfen auf Bestimmten Keywörtern
+        //TODO: Email-Betreff prüfen auf Bestimmten Keywörtern - bsp. Bewerbung, Anreise, Ankunft
         public static bool ContainsSubjectKeyword(string emailSubject) { return false; }
         #endregion
 
