@@ -17,13 +17,12 @@ namespace OutlookAddIn1
 
 
 
-        #region Betreff überprüfen
+        #region Betreff der Mail überprüfen
         //TODO: Email-Betreff prüfen auf Bestimmten Keywörtern - bsp. Bewerbung, Anreise, Ankunft
         public static bool ContainsSubjectKeyword(string emailSubject) { return false; }
         #endregion
 
-        #region Inhalt überprüfen
-
+        #region Inhalt der Mail überprüfen
         //TODO: Regual Expression um Kreditkarte herrauszufinden
         public static bool ContainsCreditCard(string emailBody) { return false; }
         
