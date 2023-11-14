@@ -1,1 +1,0 @@
-# Hauptordner für das Projekt
