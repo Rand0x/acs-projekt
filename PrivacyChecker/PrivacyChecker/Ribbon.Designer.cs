@@ -38,20 +38,18 @@
             this.Personendaten = this.Factory.CreateRibbonGroup();
             this.Adresse = this.Factory.CreateRibbonCheckBox();
             this.Geburtsdatum = this.Factory.CreateRibbonCheckBox();
-            this.Geburtsort = this.Factory.CreateRibbonCheckBox();
-            this.Telefonnummer = this.Factory.CreateRibbonCheckBox();
-            this.Sozialverischerungsnr = this.Factory.CreateRibbonCheckBox();
             this.SteuerID = this.Factory.CreateRibbonCheckBox();
+            this.Sozialverischerungsnr = this.Factory.CreateRibbonCheckBox();
             this.Bankdaten = this.Factory.CreateRibbonGroup();
             this.IBAN = this.Factory.CreateRibbonCheckBox();
             this.Kontonummer = this.Factory.CreateRibbonCheckBox();
             this.KreditkartenNr = this.Factory.CreateRibbonCheckBox();
-            this.Anhang = this.Factory.CreateRibbonGroup();
-            this.AnhaengeAnzeigen = this.Factory.CreateRibbonButton();
+            this.Execute = this.Factory.CreateRibbonGroup();
+            this.EMailVerschieben = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.Personendaten.SuspendLayout();
             this.Bankdaten.SuspendLayout();
-            this.Anhang.SuspendLayout();
+            this.Execute.SuspendLayout();
             this.SuspendLayout();
             // 
             // tab1
@@ -59,7 +57,7 @@
             this.tab1.ControlId.ControlIdType = Microsoft.Office.Tools.Ribbon.RibbonControlIdType.Office;
             this.tab1.Groups.Add(this.Personendaten);
             this.tab1.Groups.Add(this.Bankdaten);
-            this.tab1.Groups.Add(this.Anhang);
+            this.tab1.Groups.Add(this.Execute);
             this.tab1.Label = "TabAddIns";
             this.tab1.Name = "tab1";
             // 
@@ -67,10 +65,8 @@
             // 
             this.Personendaten.Items.Add(this.Adresse);
             this.Personendaten.Items.Add(this.Geburtsdatum);
-            this.Personendaten.Items.Add(this.Geburtsort);
-            this.Personendaten.Items.Add(this.Telefonnummer);
-            this.Personendaten.Items.Add(this.Sozialverischerungsnr);
             this.Personendaten.Items.Add(this.SteuerID);
+            this.Personendaten.Items.Add(this.Sozialverischerungsnr);
             this.Personendaten.Label = "Personendaten";
             this.Personendaten.Name = "Personendaten";
             // 
@@ -78,31 +74,25 @@
             // 
             this.Adresse.Label = "Adresse";
             this.Adresse.Name = "Adresse";
+            this.Adresse.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.checkbox_Adresse);
             // 
             // Geburtsdatum
             // 
             this.Geburtsdatum.Label = "Geburtsdatum";
             this.Geburtsdatum.Name = "Geburtsdatum";
-            // 
-            // Geburtsort
-            // 
-            this.Geburtsort.Label = "Geburtsort";
-            this.Geburtsort.Name = "Geburtsort";
-            // 
-            // Telefonnummer
-            // 
-            this.Telefonnummer.Label = "Telefonnummer";
-            this.Telefonnummer.Name = "Telefonnummer";
-            // 
-            // Sozialverischerungsnr
-            // 
-            this.Sozialverischerungsnr.Label = "Sozialversicherungsnummer";
-            this.Sozialverischerungsnr.Name = "Sozialverischerungsnr";
+            this.Geburtsdatum.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.checkbox_Geburtstag);
             // 
             // SteuerID
             // 
             this.SteuerID.Label = "SteuerID";
             this.SteuerID.Name = "SteuerID";
+            this.SteuerID.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.checkbox_SteuerID);
+            // 
+            // Sozialverischerungsnr
+            // 
+            this.Sozialverischerungsnr.Label = "Sozialversicherungsnummer";
+            this.Sozialverischerungsnr.Name = "Sozialverischerungsnr";
+            this.Sozialverischerungsnr.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.checkbox_SozialID);
             // 
             // Bankdaten
             // 
@@ -116,29 +106,31 @@
             // 
             this.IBAN.Label = "IBAN";
             this.IBAN.Name = "IBAN";
+            this.IBAN.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.checkbox_IBAN);
             // 
             // Kontonummer
             // 
             this.Kontonummer.Label = "Kontonummer";
             this.Kontonummer.Name = "Kontonummer";
+            this.Kontonummer.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.checkbox_Kontonummer);
             // 
             // KreditkartenNr
             // 
             this.KreditkartenNr.Label = "Kreditkartennummer";
             this.KreditkartenNr.Name = "KreditkartenNr";
+            this.KreditkartenNr.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.checkbox_Kreditkartennummer);
             // 
-            // Anhang
+            // Execute
             // 
-            this.Anhang.Items.Add(this.AnhaengeAnzeigen);
-            this.Anhang.Label = "Anhang";
-            this.Anhang.Name = "Anhang";
+            this.Execute.Items.Add(this.EMailVerschieben);
+            this.Execute.Name = "Execute";
             // 
-            // AnhaengeAnzeigen
+            // EMailVerschieben
             // 
-            this.AnhaengeAnzeigen.Label = "Anhänge anzeigen";
-            this.AnhaengeAnzeigen.Name = "AnhaengeAnzeigen";
-            this.AnhaengeAnzeigen.ScreenTip = "E-Mails mit Anhang anzeigen";
-            this.AnhaengeAnzeigen.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button1_Click);
+            this.EMailVerschieben.Label = "E-Mails verschieben";
+            this.EMailVerschieben.Name = "EMailVerschieben";
+            this.EMailVerschieben.ScreenTip = "E-Mails mit den ausgewählten Attributen verschieben";
+            this.EMailVerschieben.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonMoveEmail_click);
             // 
             // Ribbon
             // 
@@ -152,8 +144,8 @@
             this.Personendaten.PerformLayout();
             this.Bankdaten.ResumeLayout(false);
             this.Bankdaten.PerformLayout();
-            this.Anhang.ResumeLayout(false);
-            this.Anhang.PerformLayout();
+            this.Execute.ResumeLayout(false);
+            this.Execute.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -162,18 +154,16 @@
 
         internal Microsoft.Office.Tools.Ribbon.RibbonTab tab1;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup Personendaten;
-        internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox Geburtsort;
         internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox Adresse;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup Bankdaten;
         internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox Geburtsdatum;
-        internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox Telefonnummer;
         internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox IBAN;
         internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox Kontonummer;
         internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox KreditkartenNr;
-        internal Microsoft.Office.Tools.Ribbon.RibbonGroup Anhang;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup Execute;
         internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox Sozialverischerungsnr;
         internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox SteuerID;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton AnhaengeAnzeigen;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton EMailVerschieben;
     }
 
     partial class ThisRibbonCollection

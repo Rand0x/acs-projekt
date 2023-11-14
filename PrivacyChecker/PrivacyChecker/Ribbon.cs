@@ -9,45 +9,68 @@ namespace PrivacyChecker
 {
     public partial class Ribbon
     {
+        private Logic myLogic;
+        List<bool> Checkboxen;
+
         private void Ribbon_Load(object sender, RibbonUIEventArgs e)
         {
-            Geburtsort.Checked = true;
-
+            myLogic = new Logic(Globals.ThisAddIn.Application);
+            Checkboxen = new List<bool>
+            {
+                Adresse.Checked,
+                Sozialverischerungsnr.Checked,
+                Geburtsdatum.Checked,
+                SteuerID.Checked,
+                IBAN.Checked,
+                Kontonummer.Checked,
+                KreditkartenNr.Checked
+            };
         }
 
-
-        private void button1_Click(object sender, RibbonControlEventArgs e) // Button Anhänge anzeigen
+        private void buttonMoveEmail_click(object sender, RibbonControlEventArgs e)
         {
-            Microsoft.Office.Interop.Outlook.Application outlookApp = Globals.ThisAddIn.Application;
-            Microsoft.Office.Interop.Outlook.NameSpace outlookNameSpace = outlookApp.GetNamespace("MAPI");
-            Microsoft.Office.Interop.Outlook.MAPIFolder inbox = outlookNameSpace.GetDefaultFolder(Microsoft.Office.Interop.Outlook.OlDefaultFolders.olFolderInbox);
-
-            StringBuilder emailList = new StringBuilder(); // Instanz
-
-            foreach (object item in inbox.Items) // geht alle E-Mails im Posteingang durch
-            {
-                if (item is Microsoft.Office.Interop.Outlook.MailItem email) // wenn E-Mails gefunden wurde
-                {
-                    if (email.Attachments.Count > 0) // zählt alle E-Mails mit Anhang
-                    {
-                        emailList.AppendLine($"Betreff: {email.Subject}"); // nimmt den Betreff der E-Mails mit Anhang
-                    }
-
-                }
-
-            }
-
-            if (emailList.Length > 0)
-            {
-                MessageBox.Show(emailList.ToString(), "E-Mails mit Anhängen"); // Objekt gibt Liste mit Betreffzeilen der E-Mails aus, die einen Anhang haben
-            }
-            else
-            {
-                MessageBox.Show("Es wurden keine E-Mails mit Anhängen gefunden.", "E-Mails mit Anhängen");
-            }
-
-
+            myLogic.iterateEmails();
         }
 
+
+
+        //Region:
+        #region Checkboxen in Liste setzen
+
+        private void checkbox_Adresse(object sender, RibbonControlEventArgs e)
+        {
+            Checkboxen[0] = Adresse.Checked;
+        }
+
+        private void checkbox_SozialID(object sender, RibbonControlEventArgs e)
+        {
+            Checkboxen[1] = Sozialverischerungsnr.Checked;
+        }
+
+        private void checkbox_Geburtstag(object sender, RibbonControlEventArgs e)
+        {
+            Checkboxen[2] = Geburtsdatum.Checked;
+        }
+
+        private void checkbox_SteuerID(object sender, RibbonControlEventArgs e)
+        {
+            Checkboxen[3] = SteuerID.Checked;
+        }
+
+        private void checkbox_IBAN(object sender, RibbonControlEventArgs e)
+        {
+            Checkboxen[4] = IBAN.Checked;
+        }
+
+        private void checkbox_Kontonummer(object sender, RibbonControlEventArgs e)
+        {
+            Checkboxen[5] = Kontonummer.Checked;
+        }
+
+        private void checkbox_Kreditkartennummer(object sender, RibbonControlEventArgs e)
+        {
+            Checkboxen[6] = KreditkartenNr.Checked;
+        }
+        #endregion
     }
 }

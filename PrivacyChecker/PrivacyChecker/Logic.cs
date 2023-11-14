@@ -49,6 +49,7 @@ namespace PrivacyChecker
                     DateTime receivedTime = mailItem.ReceivedTime;
                     string body = mailItem.Body;
 
+
                     // Führe hier weitere Aktionen mit den E-Mail-Daten aus
                     // ...
 
