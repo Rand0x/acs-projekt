@@ -27,8 +27,9 @@ namespace PrivacyChecker
         }
 
         //Methode iteriert durch alle E-Mails im Ordner Posteingang und kann auf den E-Mails Aktionen ausführen (aktuell nonsens) 
-        public void iterateEmails()
+        public void iterateEmails(List<bool> checkboxListe)
         {
+            bool foundMail = false;
             Outlook.MAPIFolder inbox = app.Session.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderInbox);
             Outlook.Items items = inbox.Items;
 
@@ -40,8 +41,8 @@ namespace PrivacyChecker
                 {
                     if (c > 3)
                         break;
-
                     c++;
+
 
                     // Zugriff auf die E-Mail-Eigenschaften
                     string subject = mailItem.Subject;
@@ -49,19 +50,23 @@ namespace PrivacyChecker
                     DateTime receivedTime = mailItem.ReceivedTime;
                     string body = mailItem.Body;
 
-
-                    // Führe hier weitere Aktionen mit den E-Mail-Daten aus
-                    // ...
-
-                    // Beispiel: Drucke die E-Mail-Informationen
-                    showMessage(subject);
-                    //Console.WriteLine("Subject: " + subject);
-                    //Console.WriteLine("Sender: " + senderName);
-                    //Console.WriteLine("Received Time: " + receivedTime);
-                    //Console.WriteLine("Body: " + body);
-                    //Console.WriteLine("=============================");
+                    if (
+                        (checkboxListe[0] && MyRegex.ContainsAddress(body)) || // Funktioniert irgendwie nicht
+                        (checkboxListe[1] && MyRegex.ContainsVersicherungsnummer(body)) ||
+                        (checkboxListe[2] && MyRegex.ContainsDate(body)) ||
+                        (checkboxListe[3] && MyRegex.ContainsIdNr(body)) ||
+                        (checkboxListe[4] && MyRegex.ContainsIBAN(body)) ||
+                        (checkboxListe[5] && false) || // TODO: Keine Implementierung für Kontonummer 
+                        (checkboxListe[6] && MyRegex.ContainsCreditCard(body))
+                       )
+                    {
+                        foundMail = true;
+                        MessageBox.Show($"Email gefunden {subject}");
+                        //Move Mail
+                    }
                 }
             }
+            if ( !foundMail ) { MessageBox.Show("Es wurde keine Email gefunden"); }
         }
 
         //Methode verschiebt die aktuell in Outlook ausgewählte E-Mail in einen spezifizierten "targetFolder"

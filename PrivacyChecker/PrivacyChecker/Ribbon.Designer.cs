@@ -46,6 +46,8 @@
             this.KreditkartenNr = this.Factory.CreateRibbonCheckBox();
             this.Execute = this.Factory.CreateRibbonGroup();
             this.EMailVerschieben = this.Factory.CreateRibbonButton();
+            this.group1 = this.Factory.CreateRibbonGroup();
+            this.separator1 = this.Factory.CreateRibbonSeparator();
             this.tab1.SuspendLayout();
             this.Personendaten.SuspendLayout();
             this.Bankdaten.SuspendLayout();
@@ -55,9 +57,10 @@
             // tab1
             // 
             this.tab1.ControlId.ControlIdType = Microsoft.Office.Tools.Ribbon.RibbonControlIdType.Office;
+            this.tab1.Groups.Add(this.Execute);
             this.tab1.Groups.Add(this.Personendaten);
             this.tab1.Groups.Add(this.Bankdaten);
-            this.tab1.Groups.Add(this.Execute);
+            this.tab1.Groups.Add(this.group1);
             this.tab1.Label = "TabAddIns";
             this.tab1.Name = "tab1";
             // 
@@ -65,6 +68,7 @@
             // 
             this.Personendaten.Items.Add(this.Adresse);
             this.Personendaten.Items.Add(this.Geburtsdatum);
+            this.Personendaten.Items.Add(this.separator1);
             this.Personendaten.Items.Add(this.SteuerID);
             this.Personendaten.Items.Add(this.Sozialverischerungsnr);
             this.Personendaten.Label = "Personendaten";
@@ -127,10 +131,21 @@
             // 
             // EMailVerschieben
             // 
-            this.EMailVerschieben.Label = "E-Mails verschieben";
+            this.EMailVerschieben.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.EMailVerschieben.Image = global::PrivacyChecker.Properties.Resources.eye_tracking;
+            this.EMailVerschieben.Label = "Inhalt der Mails prüfen";
             this.EMailVerschieben.Name = "EMailVerschieben";
             this.EMailVerschieben.ScreenTip = "E-Mails mit den ausgewählten Attributen verschieben";
+            this.EMailVerschieben.ShowImage = true;
             this.EMailVerschieben.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonMoveEmail_click);
+            // 
+            // group1
+            // 
+            this.group1.Name = "group1";
+            // 
+            // separator1
+            // 
+            this.separator1.Name = "separator1";
             // 
             // Ribbon
             // 
@@ -164,6 +179,8 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox Sozialverischerungsnr;
         internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox SteuerID;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton EMailVerschieben;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup group1;
+        internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator1;
     }
 
     partial class ThisRibbonCollection

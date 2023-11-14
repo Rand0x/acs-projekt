@@ -7,20 +7,18 @@ using System.Threading.Tasks;
 
 namespace PrivacyChecker
 {
-    internal class RegEx
+    static public class MyRegex
     {
-        public RegEx() { }
-
-        bool ContainsCreditCard(string emailBody)
+        static public bool ContainsCreditCard(string emailBody)
         {
             Regex regexCreditCards = new Regex(
-                "(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13})",
+                @"(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13})",
                 RegexOptions.Compiled | RegexOptions.IgnorePatternWhitespace | RegexOptions.IgnoreCase);
             string replacedString = Regex.Replace(emailBody, @"(?<=\d)[\s-](?=\d)", "");
             return regexCreditCards.IsMatch(replacedString);
         }
 
-        bool ContainsVersicherungsnummer(string emailBody)
+        static public bool ContainsVersicherungsnummer(string emailBody)
         {
             Regex regexSozialRentenversicherungsnummer = new Regex(
                 @"(:?0[2-4|8-9]|1[0-9]|2[01]|2[3-6]|2[89]|3[89]|40|4[2-9]|[5-7][0-9]|8[0-2]|89)(:?0[1-9]|[1-2][0-9]|3[0-1])(:?0[1-9]|1[0-2])(:?[0-9][0-9])(:?[A-Z])(:?[0-9][0-9])([0-9])",
@@ -30,7 +28,7 @@ namespace PrivacyChecker
             return regexSozialRentenversicherungsnummer.IsMatch(replacedString);
         }
 
-        bool ContainsIdNr(string emailBody)
+        static public bool ContainsIdNr(string emailBody)
         {
             Regex regexSteuerIdNr = new Regex(
                 @"(:?[0-9]{11})",
@@ -69,7 +67,7 @@ namespace PrivacyChecker
             return false;
         }
 
-        bool ContainsDate(string emailBody)
+        static public bool ContainsDate(string emailBody)
         {
             Regex regexDatum = new Regex(
                 @"(?:(:?0{0,1}[1-9])|(:?[12][0-9])|(:?3[01]))[-\./](:?(:?0[1-9])|(:?(1[0-2])))[-\./](:?\d{2,4})",
@@ -77,14 +75,22 @@ namespace PrivacyChecker
             return regexDatum.IsMatch(emailBody);
         }
 
-        bool ContainsIBAN(string emailBody)
+        static public bool ContainsIBAN(string emailBody)
         {
             Regex regexIBAN = new Regex(
-                "(:?(?:DE[0-9]{20})|(?:AT[0-9]{18})|(?:CH[0-9]{19}))",
+                @"(:?(?:DE[0-9]{20})|(?:AT[0-9]{18})|(?:CH[0-9]{19}))",
                 RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
             string replacedString = Regex.Replace(emailBody, @"(?<=\d)[\s-](?=\d)", "");
             replacedString = Regex.Replace(replacedString, @"(?<=\w)[\s-](?=\w)", "");
             return regexIBAN.IsMatch(replacedString);
+        }
+
+        static public bool ContainsAddress(string emailBody) //Funktioniert glaube ich nicht
+        {
+            Regex regexAddress = new Regex(
+                @"((Ober|Unter den|An |Im |Platz |Berg |Am |Alt\\-).+|(?:([A-Z][a-zäüö-]+){1,2})).([Cc]haussee|[Aa]llee|[sS]tr(\\.|(a(ss|ß)e))|[Rr]ing|berg|gasse|grund|hörn| Nord|graben|[mM]arkt|[Uu]fer|[Ss]tieg|[Ll]inden|[Dd]amm|[pP]latz|brücke|Steinbüchel|Burg|stiege|[Ww]eg|rain|park|[Ww]eide|[Hh][oö]f|pfad|garten|bogen).+?(\\d{1,4})([a-zäöüß]+)?(\\-?\\d{1,4}[a-zäöüß]?)?",
+                RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            return regexAddress.IsMatch(emailBody);
         }
     }
 }

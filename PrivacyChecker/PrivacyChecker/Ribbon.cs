@@ -10,12 +10,12 @@ namespace PrivacyChecker
     public partial class Ribbon
     {
         private Logic myLogic;
-        List<bool> Checkboxen;
+        List<bool> CheckboxenListe;
 
         private void Ribbon_Load(object sender, RibbonUIEventArgs e)
         {
             myLogic = new Logic(Globals.ThisAddIn.Application);
-            Checkboxen = new List<bool>
+            CheckboxenListe = new List<bool>
             {
                 Adresse.Checked,
                 Sozialverischerungsnr.Checked,
@@ -29,7 +29,21 @@ namespace PrivacyChecker
 
         private void buttonMoveEmail_click(object sender, RibbonControlEventArgs e)
         {
-            myLogic.iterateEmails();
+            bool nothingSelected = true;
+            foreach (bool c in CheckboxenListe)
+            {
+                if (c) { nothingSelected = false; break; }
+            }
+
+            if(nothingSelected)
+            {
+                MessageBox.Show("Bitte wählen Sie zuerst nach welchen Daten gesucht werden soll und probieren Sie es nochmal", "Keine Auswahl");
+            }
+            else
+            {
+                
+                myLogic.iterateEmails(CheckboxenListe);
+            }
         }
 
 
@@ -39,37 +53,37 @@ namespace PrivacyChecker
 
         private void checkbox_Adresse(object sender, RibbonControlEventArgs e)
         {
-            Checkboxen[0] = Adresse.Checked;
+            CheckboxenListe[0] = Adresse.Checked;
         }
 
         private void checkbox_SozialID(object sender, RibbonControlEventArgs e)
         {
-            Checkboxen[1] = Sozialverischerungsnr.Checked;
+            CheckboxenListe[1] = Sozialverischerungsnr.Checked;
         }
 
         private void checkbox_Geburtstag(object sender, RibbonControlEventArgs e)
         {
-            Checkboxen[2] = Geburtsdatum.Checked;
+            CheckboxenListe[2] = Geburtsdatum.Checked;
         }
 
         private void checkbox_SteuerID(object sender, RibbonControlEventArgs e)
         {
-            Checkboxen[3] = SteuerID.Checked;
+            CheckboxenListe[3] = SteuerID.Checked;
         }
 
         private void checkbox_IBAN(object sender, RibbonControlEventArgs e)
         {
-            Checkboxen[4] = IBAN.Checked;
+            CheckboxenListe[4] = IBAN.Checked;
         }
 
         private void checkbox_Kontonummer(object sender, RibbonControlEventArgs e)
         {
-            Checkboxen[5] = Kontonummer.Checked;
+            CheckboxenListe[5] = Kontonummer.Checked;
         }
 
         private void checkbox_Kreditkartennummer(object sender, RibbonControlEventArgs e)
         {
-            Checkboxen[6] = KreditkartenNr.Checked;
+            CheckboxenListe[6] = KreditkartenNr.Checked;
         }
         #endregion
     }
