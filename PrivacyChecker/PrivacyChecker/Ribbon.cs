@@ -15,6 +15,7 @@ namespace PrivacyChecker
         private void Ribbon_Load(object sender, RibbonUIEventArgs e)
         {
             myLogic = new Logic(Globals.ThisAddIn.Application);
+
             CheckboxenListe = new List<bool>
             {
                 Adresse.Checked,
@@ -23,7 +24,8 @@ namespace PrivacyChecker
                 SteuerID.Checked,
                 IBAN.Checked,
                 Kontonummer.Checked,
-                KreditkartenNr.Checked
+                KreditkartenNr.Checked,
+                Anhaenge.Checked,
             };
         }
 
@@ -41,7 +43,6 @@ namespace PrivacyChecker
             }
             else
             {
-                
                 myLogic.iterateEmails(CheckboxenListe);
             }
         }
@@ -84,6 +85,11 @@ namespace PrivacyChecker
         private void checkbox_Kreditkartennummer(object sender, RibbonControlEventArgs e)
         {
             CheckboxenListe[6] = KreditkartenNr.Checked;
+        }
+
+        private void checkbox_Anhaenge(object sender, RibbonControlEventArgs e)
+        {
+            CheckboxenListe[7] = Anhaenge.Checked;
         }
         #endregion
     }

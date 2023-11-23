@@ -35,23 +35,25 @@
         private void InitializeComponent()
         {
             this.tab1 = this.Factory.CreateRibbonTab();
+            this.Execute = this.Factory.CreateRibbonGroup();
+            this.EMailVerschieben = this.Factory.CreateRibbonButton();
             this.Personendaten = this.Factory.CreateRibbonGroup();
             this.Adresse = this.Factory.CreateRibbonCheckBox();
             this.Geburtsdatum = this.Factory.CreateRibbonCheckBox();
+            this.separator1 = this.Factory.CreateRibbonSeparator();
             this.SteuerID = this.Factory.CreateRibbonCheckBox();
             this.Sozialverischerungsnr = this.Factory.CreateRibbonCheckBox();
             this.Bankdaten = this.Factory.CreateRibbonGroup();
             this.IBAN = this.Factory.CreateRibbonCheckBox();
             this.Kontonummer = this.Factory.CreateRibbonCheckBox();
             this.KreditkartenNr = this.Factory.CreateRibbonCheckBox();
-            this.Execute = this.Factory.CreateRibbonGroup();
-            this.EMailVerschieben = this.Factory.CreateRibbonButton();
-            this.group1 = this.Factory.CreateRibbonGroup();
-            this.separator1 = this.Factory.CreateRibbonSeparator();
+            this.Zusatz = this.Factory.CreateRibbonGroup();
+            this.Anhaenge = this.Factory.CreateRibbonCheckBox();
             this.tab1.SuspendLayout();
+            this.Execute.SuspendLayout();
             this.Personendaten.SuspendLayout();
             this.Bankdaten.SuspendLayout();
-            this.Execute.SuspendLayout();
+            this.Zusatz.SuspendLayout();
             this.SuspendLayout();
             // 
             // tab1
@@ -60,9 +62,24 @@
             this.tab1.Groups.Add(this.Execute);
             this.tab1.Groups.Add(this.Personendaten);
             this.tab1.Groups.Add(this.Bankdaten);
-            this.tab1.Groups.Add(this.group1);
+            this.tab1.Groups.Add(this.Zusatz);
             this.tab1.Label = "TabAddIns";
             this.tab1.Name = "tab1";
+            // 
+            // Execute
+            // 
+            this.Execute.Items.Add(this.EMailVerschieben);
+            this.Execute.Name = "Execute";
+            // 
+            // EMailVerschieben
+            // 
+            this.EMailVerschieben.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.EMailVerschieben.Image = global::PrivacyChecker.Properties.Resources.eye_tracking;
+            this.EMailVerschieben.Label = "Inhalt der Mails prüfen";
+            this.EMailVerschieben.Name = "EMailVerschieben";
+            this.EMailVerschieben.ScreenTip = "E-Mails mit den ausgewählten Attributen verschieben";
+            this.EMailVerschieben.ShowImage = true;
+            this.EMailVerschieben.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonMoveEmail_click);
             // 
             // Personendaten
             // 
@@ -85,6 +102,10 @@
             this.Geburtsdatum.Label = "Geburtsdatum";
             this.Geburtsdatum.Name = "Geburtsdatum";
             this.Geburtsdatum.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.checkbox_Geburtstag);
+            // 
+            // separator1
+            // 
+            this.separator1.Name = "separator1";
             // 
             // SteuerID
             // 
@@ -124,28 +145,17 @@
             this.KreditkartenNr.Name = "KreditkartenNr";
             this.KreditkartenNr.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.checkbox_Kreditkartennummer);
             // 
-            // Execute
+            // Zusatz
             // 
-            this.Execute.Items.Add(this.EMailVerschieben);
-            this.Execute.Name = "Execute";
+            this.Zusatz.Items.Add(this.Anhaenge);
+            this.Zusatz.Label = "Zusatz";
+            this.Zusatz.Name = "Zusatz";
             // 
-            // EMailVerschieben
+            // Anhaenge
             // 
-            this.EMailVerschieben.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.EMailVerschieben.Image = global::PrivacyChecker.Properties.Resources.eye_tracking;
-            this.EMailVerschieben.Label = "Inhalt der Mails prüfen";
-            this.EMailVerschieben.Name = "EMailVerschieben";
-            this.EMailVerschieben.ScreenTip = "E-Mails mit den ausgewählten Attributen verschieben";
-            this.EMailVerschieben.ShowImage = true;
-            this.EMailVerschieben.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonMoveEmail_click);
-            // 
-            // group1
-            // 
-            this.group1.Name = "group1";
-            // 
-            // separator1
-            // 
-            this.separator1.Name = "separator1";
+            this.Anhaenge.Label = "Anhaenge";
+            this.Anhaenge.Name = "Anhaenge";
+            this.Anhaenge.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.checkbox_Anhaenge);
             // 
             // Ribbon
             // 
@@ -155,12 +165,14 @@
             this.Load += new Microsoft.Office.Tools.Ribbon.RibbonUIEventHandler(this.Ribbon_Load);
             this.tab1.ResumeLayout(false);
             this.tab1.PerformLayout();
+            this.Execute.ResumeLayout(false);
+            this.Execute.PerformLayout();
             this.Personendaten.ResumeLayout(false);
             this.Personendaten.PerformLayout();
             this.Bankdaten.ResumeLayout(false);
             this.Bankdaten.PerformLayout();
-            this.Execute.ResumeLayout(false);
-            this.Execute.PerformLayout();
+            this.Zusatz.ResumeLayout(false);
+            this.Zusatz.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -179,8 +191,9 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox Sozialverischerungsnr;
         internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox SteuerID;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton EMailVerschieben;
-        internal Microsoft.Office.Tools.Ribbon.RibbonGroup group1;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup Zusatz;
         internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator1;
+        internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox Anhaenge;
     }
 
     partial class ThisRibbonCollection

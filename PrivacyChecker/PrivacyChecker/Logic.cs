@@ -57,7 +57,8 @@ namespace PrivacyChecker
                         (checkboxListe[3] && MyRegex.ContainsIdNr(body)) ||
                         (checkboxListe[4] && MyRegex.ContainsIBAN(body)) ||
                         (checkboxListe[5] && false) || // TODO: Keine Implementierung für Kontonummer 
-                        (checkboxListe[6] && MyRegex.ContainsCreditCard(body))
+                        (checkboxListe[6] && MyRegex.ContainsCreditCard(body)) ||
+                        (checkboxListe[7] && false)
                        )
                     {
                         foundMail = true;

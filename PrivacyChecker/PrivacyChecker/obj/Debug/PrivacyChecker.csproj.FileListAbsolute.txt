@@ -26,3 +26,17 @@ C:\Users\engel\OneDrive - Technische Hochschule Nürnberg Georg Simon Ohm\_IT-Pr
 C:\Users\engel\OneDrive - Technische Hochschule Nürnberg Georg Simon Ohm\_IT-Projekt\acs-projekt\PrivacyChecker\PrivacyChecker\obj\Debug\PrivacyChecker.csproj.CopyComplete
 C:\Users\engel\OneDrive - Technische Hochschule Nürnberg Georg Simon Ohm\_IT-Projekt\acs-projekt\PrivacyChecker\PrivacyChecker\obj\Debug\PrivacyChecker.dll
 C:\Users\engel\OneDrive - Technische Hochschule Nürnberg Georg Simon Ohm\_IT-Projekt\acs-projekt\PrivacyChecker\PrivacyChecker\obj\Debug\PrivacyChecker.pdb
+C:\Users\Samuel\OneDrive - Technische Hochschule Nürnberg Georg Simon Ohm\7. Semester\IT-Projekt\acs-projekt\PrivacyChecker\PrivacyChecker\bin\Debug\PrivacyChecker.dll
+C:\Users\Samuel\OneDrive - Technische Hochschule Nürnberg Georg Simon Ohm\7. Semester\IT-Projekt\acs-projekt\PrivacyChecker\PrivacyChecker\bin\Debug\PrivacyChecker.pdb
+C:\Users\Samuel\OneDrive - Technische Hochschule Nürnberg Georg Simon Ohm\7. Semester\IT-Projekt\acs-projekt\PrivacyChecker\PrivacyChecker\bin\Debug\PrivacyChecker.dll.manifest
+C:\Users\Samuel\OneDrive - Technische Hochschule Nürnberg Georg Simon Ohm\7. Semester\IT-Projekt\acs-projekt\PrivacyChecker\PrivacyChecker\bin\Debug\PrivacyChecker.vsto
+C:\Users\Samuel\OneDrive - Technische Hochschule Nürnberg Georg Simon Ohm\7. Semester\IT-Projekt\acs-projekt\PrivacyChecker\PrivacyChecker\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.dll
+C:\Users\Samuel\OneDrive - Technische Hochschule Nürnberg Georg Simon Ohm\7. Semester\IT-Projekt\acs-projekt\PrivacyChecker\PrivacyChecker\bin\Debug\Microsoft.Office.Tools.Outlook.v4.0.Utilities.dll
+C:\Users\Samuel\OneDrive - Technische Hochschule Nürnberg Georg Simon Ohm\7. Semester\IT-Projekt\acs-projekt\PrivacyChecker\PrivacyChecker\obj\Debug\PrivacyChecker.csproj.AssemblyReference.cache
+C:\Users\Samuel\OneDrive - Technische Hochschule Nürnberg Georg Simon Ohm\7. Semester\IT-Projekt\acs-projekt\PrivacyChecker\PrivacyChecker\obj\Debug\PrivacyChecker.Properties.Resources.resources
+C:\Users\Samuel\OneDrive - Technische Hochschule Nürnberg Georg Simon Ohm\7. Semester\IT-Projekt\acs-projekt\PrivacyChecker\PrivacyChecker\obj\Debug\PrivacyChecker.Ribbon.resources
+C:\Users\Samuel\OneDrive - Technische Hochschule Nürnberg Georg Simon Ohm\7. Semester\IT-Projekt\acs-projekt\PrivacyChecker\PrivacyChecker\obj\Debug\PrivacyChecker.csproj.GenerateResource.cache
+C:\Users\Samuel\OneDrive - Technische Hochschule Nürnberg Georg Simon Ohm\7. Semester\IT-Projekt\acs-projekt\PrivacyChecker\PrivacyChecker\obj\Debug\PrivacyChecker.csproj.CoreCompileInputs.cache
+C:\Users\Samuel\OneDrive - Technische Hochschule Nürnberg Georg Simon Ohm\7. Semester\IT-Projekt\acs-projekt\PrivacyChecker\PrivacyChecker\obj\Debug\PrivacyChecker.csproj.CopyComplete
+C:\Users\Samuel\OneDrive - Technische Hochschule Nürnberg Georg Simon Ohm\7. Semester\IT-Projekt\acs-projekt\PrivacyChecker\PrivacyChecker\obj\Debug\PrivacyChecker.dll
+C:\Users\Samuel\OneDrive - Technische Hochschule Nürnberg Georg Simon Ohm\7. Semester\IT-Projekt\acs-projekt\PrivacyChecker\PrivacyChecker\obj\Debug\PrivacyChecker.pdb
