@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Outlook;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -26,29 +28,30 @@ namespace PrivacyChecker
             MessageBox.Show(message);
         }
 
-        //Methode iteriert durch alle E-Mails im Ordner Posteingang und kann auf den E-Mails Aktionen ausführen (aktuell nonsens) 
+        //Methode iteriert durch alle E-Mails im Ordner Posteingang und kann auf den E-Mails Aktionen ausführen
         public void iterateEmails(List<bool> checkboxListe)
         {
             bool foundMail = false;
             Outlook.MAPIFolder inbox = app.Session.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderInbox);
             Outlook.Items items = inbox.Items;
 
-            int c = 0;
-
-            foreach (object item in items)
+            if (!FolderExists(inbox.Parent, "E-Mails mit persönlichen Daten (PrivacyChecker)"))
             {
+                createNewFolder("E-Mails mit persönlichen Daten (PrivacyChecker)");
+            }
+
+            for (int i = items.Count; i > 0; i--)
+            {
+                object item = items[i];
+
                 if (item is Outlook.MailItem mailItem)
                 {
-                    if (c > 3)
-                        break;
-                    c++;
-
-
                     // Zugriff auf die E-Mail-Eigenschaften
                     string subject = mailItem.Subject;
                     string senderName = mailItem.SenderName;
                     DateTime receivedTime = mailItem.ReceivedTime;
                     string body = mailItem.Body;
+                    Outlook.Attachments attachments = mailItem.Attachments;
 
                     if (
                         (checkboxListe[0] && MyRegex.ContainsAddress(body)) || // Funktioniert irgendwie nicht
@@ -58,21 +61,41 @@ namespace PrivacyChecker
                         (checkboxListe[4] && MyRegex.ContainsIBAN(body)) ||
                         (checkboxListe[5] && false) || // TODO: Keine Implementierung für Kontonummer 
                         (checkboxListe[6] && MyRegex.ContainsCreditCard(body)) ||
-                        (checkboxListe[7] && false)
+                        (checkboxListe[7] && MyRegex.ContainsKeywordsInAttachments(attachments))
                        )
                     {
                         foundMail = true;
                         MessageBox.Show($"Email gefunden {subject}");
-                        //Move Mail
+
+                        MoveEmail(mailItem, "E-Mails mit persönlichen Daten (PrivacyChecker)");
                     }
                 }
             }
-            if ( !foundMail ) { MessageBox.Show("Es wurde keine Email gefunden"); }
+
+            if (!foundMail) { MessageBox.Show("Es wurde keine Email gefunden"); }
+        }
+
+        public void MoveEmail(Outlook.MailItem email, string targetFolder)
+        {
+            Outlook.NameSpace outlookNamespace = app.GetNamespace("MAPI");
+
+            // Prüft, ob ein korrekter Target-Folder übergeben wurde und ob dieser Target-Folder existiert
+            if (targetFolder != null && FolderExists(outlookNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderInbox).Parent, targetFolder))
+            {
+                Outlook.MAPIFolder targetFolderName = outlookNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderInbox).Parent.Folders[targetFolder];
+
+                email.Move(targetFolderName);
+                showMessage("Email moved to folder: " + targetFolder);
+            }
+            else
+            {
+                showMessage("Specified Target-Folder not found.");
+            }
         }
 
         //Methode verschiebt die aktuell in Outlook ausgewählte E-Mail in einen spezifizierten "targetFolder"
         //Wenn der Target-Folder nicht existiert wird eine Fehler-Meldung ausgegeben
-        public void moveEmail(string targetFolder)
+        public void moveEmailOld(string targetFolder)
         {
             Outlook.Explorer explorer = app.ActiveExplorer();
 
@@ -99,7 +122,6 @@ namespace PrivacyChecker
             {
                 showMessage("No email selected.");
             }
-
         }
 
         //Methode prüft ob ein Ordnername "folderName" in einem Ordner "parentFolder" existiert

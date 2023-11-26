@@ -1,9 +1,13 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Outlook;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
+using Outlook = Microsoft.Office.Interop.Outlook;
 
 namespace PrivacyChecker
 {
@@ -91,6 +95,130 @@ namespace PrivacyChecker
                 @"((Ober|Unter den|An |Im |Platz |Berg |Am |Alt\\-).+|(?:([A-Z][a-zäüö-]+){1,2})).([Cc]haussee|[Aa]llee|[sS]tr(\\.|(a(ss|ß)e))|[Rr]ing|berg|gasse|grund|hörn| Nord|graben|[mM]arkt|[Uu]fer|[Ss]tieg|[Ll]inden|[Dd]amm|[pP]latz|brücke|Steinbüchel|Burg|stiege|[Ww]eg|rain|park|[Ww]eide|[Hh][oö]f|pfad|garten|bogen).+?(\\d{1,4})([a-zäöüß]+)?(\\-?\\d{1,4}[a-zäöüß]?)?",
                 RegexOptions.Compiled | RegexOptions.IgnoreCase);
             return regexAddress.IsMatch(emailBody);
+        }
+
+        static public bool ContainsKeywordsInAttachments(Outlook.Attachments attachments)
+        {
+            string[] keywords = 
+            {
+                "Akte",
+                "Angebot",
+                "Audit",
+                "Aufnahme",
+                "Authentifizierung",
+                "Backup",
+                "Benutzeranmeldung",
+                "Bericht",
+                "Bewerbung",
+                "Bilanz",
+                "Budgetplanung",
+                "Business-Intelligence",
+                "Businessplan",
+                "Compliance",
+                "Cookie-Richtlinien",
+                "Cyberabwehr",
+                "Cybersicherheit",
+                "Datenanalyse",
+                "Datenbank",
+                "Datenschutz",
+                "Datenschutzerklärung",
+                "Datenschutzgesetz",
+                "Datenintegrität",
+                "Datenmanagement",
+                "Datenprotokoll",
+                "Datenverarbeitung",
+                "Dokumentationsrichtlinien",
+                "Dokumentenmanagement",
+                "DSGVO",
+                "Einwilligungserklärung",
+                "Excel",
+                "Finanzanalyse",
+                "Finanzbericht",
+                "Firewall",
+                "Gehaltsabrechnung",
+                "Geschäftsbericht",
+                "Geschäftsgeheimnis",
+                "Geschäftsplan",
+                "Geschäftsvereinbarung",
+                "Gruppenbild",
+                "Identitätsdiebstahl",
+                "Investitionsplan",
+                "Investor",
+                "ISO-Zertifizierung",
+                "IT-Sicherheit",
+                "Kalkulation",
+                "Klientenakte",
+                "Kontodaten",
+                "Kreditkartenabrechnung",
+                "Kunden",
+                "Kundenakquise",
+                "Lebenslauf",
+                "Login",
+                "Logindaten",
+                "Marketingstrategie",
+                "Meeting",
+                "Mitarbeiterdaten",
+                "Netzwerksicherheit",
+                "Nicht-Offenlegungsvereinbarung",
+                "Patientendaten",
+                "Personalakte",
+                "Persönliche Daten",
+                "Pitch",
+                "Produktkatalog",
+                "Profilbild",
+                "Projektmanagement",
+                "Projektplan",
+                "Protokoll",
+                "Rechnung",
+                "Risikoanalyse",
+                "Risikomanagement",
+                "Secret",
+                "Sicherheitsaudit",
+                "Sicherheitsprotokoll",
+                "Sicherheitstraining",
+                "Softwarelizenz",
+                "Strategieentwicklung",
+                "Strategieplan",
+                //"Test",
+                "Verkaufspräsentation",
+                "Vertrauen",
+                "Vertraulich",
+                "Vertrag",
+                "Verschlüsselung",
+                "Versicherung",
+                "Videoüberwachung",
+                "Virenschutz",
+                "VPN-Zugang",
+                "Wettbewerbsanalyse",
+                "Wichtig",
+                "Zeugnis",
+                "Zertifikat",
+                "Zugangsdaten",
+                "Zugriffsrechte"
+            };
+
+            if (attachments == null)
+            {
+                // Wenn der Anhang null ist, gibt es keine Keywords.
+                return false;
+            }
+            else
+            {
+                foreach (Outlook.Attachment attachment in attachments)
+                {
+                    string attachmentName = attachment.FileName;
+
+                    // Überprüfen, ob der Anhangsname eines der Keywords enthält
+                    if (keywords.Any(keyword => attachmentName.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0))
+                    {
+                        // Wenn eines der Keywords gefunden wurde, gebe true zurück
+                        return true;
+                    }
+                }
+
+                // Kein Keyword wurde gefunden
+                return false;
+            }
         }
     }
 }

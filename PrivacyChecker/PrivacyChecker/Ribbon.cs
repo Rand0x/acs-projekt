@@ -47,8 +47,6 @@ namespace PrivacyChecker
             }
         }
 
-
-
         //Region:
         #region Checkboxen in Liste setzen
 
