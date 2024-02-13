@@ -38,14 +38,11 @@
             this.Execute = this.Factory.CreateRibbonGroup();
             this.EMailVerschieben = this.Factory.CreateRibbonButton();
             this.Personendaten = this.Factory.CreateRibbonGroup();
-            this.Adresse = this.Factory.CreateRibbonCheckBox();
-            this.Geburtsdatum = this.Factory.CreateRibbonCheckBox();
-            this.separator1 = this.Factory.CreateRibbonSeparator();
             this.SteuerID = this.Factory.CreateRibbonCheckBox();
             this.Sozialverischerungsnr = this.Factory.CreateRibbonCheckBox();
+            this.Geburtsdatum = this.Factory.CreateRibbonCheckBox();
             this.Bankdaten = this.Factory.CreateRibbonGroup();
             this.IBAN = this.Factory.CreateRibbonCheckBox();
-            this.Kontonummer = this.Factory.CreateRibbonCheckBox();
             this.KreditkartenNr = this.Factory.CreateRibbonCheckBox();
             this.Zusatz = this.Factory.CreateRibbonGroup();
             this.Anhaenge = this.Factory.CreateRibbonCheckBox();
@@ -83,29 +80,11 @@
             // 
             // Personendaten
             // 
-            this.Personendaten.Items.Add(this.Adresse);
-            this.Personendaten.Items.Add(this.Geburtsdatum);
-            this.Personendaten.Items.Add(this.separator1);
             this.Personendaten.Items.Add(this.SteuerID);
             this.Personendaten.Items.Add(this.Sozialverischerungsnr);
+            this.Personendaten.Items.Add(this.Geburtsdatum);
             this.Personendaten.Label = "Personendaten";
             this.Personendaten.Name = "Personendaten";
-            // 
-            // Adresse
-            // 
-            this.Adresse.Label = "Adresse";
-            this.Adresse.Name = "Adresse";
-            this.Adresse.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.checkbox_Adresse);
-            // 
-            // Geburtsdatum
-            // 
-            this.Geburtsdatum.Label = "Geburtsdatum";
-            this.Geburtsdatum.Name = "Geburtsdatum";
-            this.Geburtsdatum.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.checkbox_Geburtstag);
-            // 
-            // separator1
-            // 
-            this.separator1.Name = "separator1";
             // 
             // SteuerID
             // 
@@ -119,10 +98,15 @@
             this.Sozialverischerungsnr.Name = "Sozialverischerungsnr";
             this.Sozialverischerungsnr.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.checkbox_SozialID);
             // 
+            // Geburtsdatum
+            // 
+            this.Geburtsdatum.Label = "Geburtsdatum";
+            this.Geburtsdatum.Name = "Geburtsdatum";
+            this.Geburtsdatum.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.checkbox_Geburtstag);
+            // 
             // Bankdaten
             // 
             this.Bankdaten.Items.Add(this.IBAN);
-            this.Bankdaten.Items.Add(this.Kontonummer);
             this.Bankdaten.Items.Add(this.KreditkartenNr);
             this.Bankdaten.Label = "Bankdaten";
             this.Bankdaten.Name = "Bankdaten";
@@ -132,12 +116,6 @@
             this.IBAN.Label = "IBAN";
             this.IBAN.Name = "IBAN";
             this.IBAN.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.checkbox_IBAN);
-            // 
-            // Kontonummer
-            // 
-            this.Kontonummer.Label = "Kontonummer";
-            this.Kontonummer.Name = "Kontonummer";
-            this.Kontonummer.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.checkbox_Kontonummer);
             // 
             // KreditkartenNr
             // 
@@ -181,19 +159,16 @@
 
         internal Microsoft.Office.Tools.Ribbon.RibbonTab tab1;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup Personendaten;
-        internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox Adresse;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup Bankdaten;
-        internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox Geburtsdatum;
         internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox IBAN;
-        internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox Kontonummer;
         internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox KreditkartenNr;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup Execute;
         internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox Sozialverischerungsnr;
         internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox SteuerID;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton EMailVerschieben;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup Zusatz;
-        internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator1;
         internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox Anhaenge;
+        internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox Geburtsdatum;
     }
 
     partial class ThisRibbonCollection

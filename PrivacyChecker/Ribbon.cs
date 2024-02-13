@@ -1,8 +1,5 @@
 ﻿using Microsoft.Office.Tools.Ribbon;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace PrivacyChecker
@@ -18,12 +15,10 @@ namespace PrivacyChecker
 
             CheckboxenListe = new List<bool>
             {
-                Adresse.Checked,
                 Sozialverischerungsnr.Checked,
                 Geburtsdatum.Checked,
                 SteuerID.Checked,
                 IBAN.Checked,
-                Kontonummer.Checked,
                 KreditkartenNr.Checked,
                 Anhaenge.Checked,
             };
@@ -50,44 +45,34 @@ namespace PrivacyChecker
         //Region:
         #region Checkboxen in Liste setzen
 
-        private void checkbox_Adresse(object sender, RibbonControlEventArgs e)
-        {
-            CheckboxenListe[0] = Adresse.Checked;
-        }
-
         private void checkbox_SozialID(object sender, RibbonControlEventArgs e)
         {
-            CheckboxenListe[1] = Sozialverischerungsnr.Checked;
+            CheckboxenListe[0] = Sozialverischerungsnr.Checked;
         }
 
         private void checkbox_Geburtstag(object sender, RibbonControlEventArgs e)
         {
-            CheckboxenListe[2] = Geburtsdatum.Checked;
+            CheckboxenListe[1] = Geburtsdatum.Checked;
         }
 
         private void checkbox_SteuerID(object sender, RibbonControlEventArgs e)
         {
-            CheckboxenListe[3] = SteuerID.Checked;
+            CheckboxenListe[2] = SteuerID.Checked;
         }
 
         private void checkbox_IBAN(object sender, RibbonControlEventArgs e)
         {
-            CheckboxenListe[4] = IBAN.Checked;
-        }
-
-        private void checkbox_Kontonummer(object sender, RibbonControlEventArgs e)
-        {
-            CheckboxenListe[5] = Kontonummer.Checked;
+            CheckboxenListe[3] = IBAN.Checked;
         }
 
         private void checkbox_Kreditkartennummer(object sender, RibbonControlEventArgs e)
         {
-            CheckboxenListe[6] = KreditkartenNr.Checked;
+            CheckboxenListe[4] = KreditkartenNr.Checked;
         }
 
         private void checkbox_Anhaenge(object sender, RibbonControlEventArgs e)
         {
-            CheckboxenListe[7] = Anhaenge.Checked;
+            CheckboxenListe[5] = Anhaenge.Checked;
         }
         #endregion
     }

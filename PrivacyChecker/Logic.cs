@@ -1,11 +1,5 @@
-﻿using Microsoft.Office.Interop.Outlook;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.Mail;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Outlook = Microsoft.Office.Interop.Outlook;
 
@@ -32,6 +26,7 @@ namespace PrivacyChecker
         public void iterateEmails(List<bool> checkboxListe)
         {
             bool foundMail = false;
+            int foundMailCounter = 0;
             Outlook.MAPIFolder inbox = app.Session.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderInbox);
             Outlook.Items items = inbox.Items;
 
@@ -54,23 +49,23 @@ namespace PrivacyChecker
                     Outlook.Attachments attachments = mailItem.Attachments;
 
                     if (
-                        (checkboxListe[0] && MyRegex.ContainsAddress(body)) || // Funktioniert irgendwie nicht
-                        (checkboxListe[1] && MyRegex.ContainsVersicherungsnummer(body)) ||
-                        (checkboxListe[2] && MyRegex.ContainsDate(body)) ||
-                        (checkboxListe[3] && MyRegex.ContainsIdNr(body)) ||
-                        (checkboxListe[4] && MyRegex.ContainsIBAN(body)) ||
-                        (checkboxListe[5] && false) || // TODO: Keine Implementierung für Kontonummer 
-                        (checkboxListe[6] && MyRegex.ContainsCreditCard(body)) ||
-                        (checkboxListe[7] && MyRegex.ContainsKeywordsInAttachments(attachments))
+                        (checkboxListe[0] && MyRegex.ContainsVersicherungsnummer(body)) ||
+                        (checkboxListe[1] && MyRegex.ContainsDate(body)) ||
+                        (checkboxListe[2] && MyRegex.ContainsIdNr(body)) ||
+                        (checkboxListe[3] && MyRegex.ContainsIBAN(body)) ||
+                        (checkboxListe[4] && MyRegex.ContainsCreditCard(body)) ||
+                        (checkboxListe[5] && MyRegex.ContainsKeywordsInAttachments(attachments))
                        )
                     {
                         foundMail = true;
-                        MessageBox.Show($"Email gefunden {subject}");
+                        foundMailCounter++;
 
                         MoveEmail(mailItem, "E-Mails mit persönlichen Daten (PrivacyChecker)");
                     }
                 }
             }
+
+            if (foundMail) { MessageBox.Show($"Es wurden {foundMailCounter} Emails verschoben!"); }
 
             if (!foundMail) { MessageBox.Show("Es wurde keine Email gefunden"); }
         }
@@ -85,7 +80,7 @@ namespace PrivacyChecker
                 Outlook.MAPIFolder targetFolderName = outlookNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderInbox).Parent.Folders[targetFolder];
 
                 email.Move(targetFolderName);
-                showMessage("Email moved to folder: " + targetFolder);
+                // showMessage("Email moved to folder: " + targetFolder);
             }
             else
             {

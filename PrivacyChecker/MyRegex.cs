@@ -1,12 +1,6 @@
-﻿using Microsoft.Office.Interop.Outlook;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Net.Mail;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
 using Outlook = Microsoft.Office.Interop.Outlook;
 
 namespace PrivacyChecker

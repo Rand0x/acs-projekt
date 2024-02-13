@@ -1,0 +1,14 @@
+C:\Users\borshch\OneDrive - Technische Hochschule Nürnberg Georg Simon Ohm\7. Semester\IT-Projekt\acs\PrivacyChecker\bin\Debug\PrivacyChecker.dll
+C:\Users\borshch\OneDrive - Technische Hochschule Nürnberg Georg Simon Ohm\7. Semester\IT-Projekt\acs\PrivacyChecker\bin\Debug\PrivacyChecker.pdb
+C:\Users\borshch\OneDrive - Technische Hochschule Nürnberg Georg Simon Ohm\7. Semester\IT-Projekt\acs\PrivacyChecker\bin\Debug\PrivacyChecker.dll.manifest
+C:\Users\borshch\OneDrive - Technische Hochschule Nürnberg Georg Simon Ohm\7. Semester\IT-Projekt\acs\PrivacyChecker\bin\Debug\PrivacyChecker.vsto
+C:\Users\borshch\OneDrive - Technische Hochschule Nürnberg Georg Simon Ohm\7. Semester\IT-Projekt\acs\PrivacyChecker\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.dll
+C:\Users\borshch\OneDrive - Technische Hochschule Nürnberg Georg Simon Ohm\7. Semester\IT-Projekt\acs\PrivacyChecker\bin\Debug\Microsoft.Office.Tools.Outlook.v4.0.Utilities.dll
+C:\Users\borshch\OneDrive - Technische Hochschule Nürnberg Georg Simon Ohm\7. Semester\IT-Projekt\acs\PrivacyChecker\obj\Debug\PrivacyChecker.csproj.AssemblyReference.cache
+C:\Users\borshch\OneDrive - Technische Hochschule Nürnberg Georg Simon Ohm\7. Semester\IT-Projekt\acs\PrivacyChecker\obj\Debug\PrivacyChecker.Properties.Resources.resources
+C:\Users\borshch\OneDrive - Technische Hochschule Nürnberg Georg Simon Ohm\7. Semester\IT-Projekt\acs\PrivacyChecker\obj\Debug\PrivacyChecker.Ribbon.resources
+C:\Users\borshch\OneDrive - Technische Hochschule Nürnberg Georg Simon Ohm\7. Semester\IT-Projekt\acs\PrivacyChecker\obj\Debug\PrivacyChecker.csproj.GenerateResource.cache
+C:\Users\borshch\OneDrive - Technische Hochschule Nürnberg Georg Simon Ohm\7. Semester\IT-Projekt\acs\PrivacyChecker\obj\Debug\PrivacyChecker.csproj.CoreCompileInputs.cache
+C:\Users\borshch\OneDrive - Technische Hochschule Nürnberg Georg Simon Ohm\7. Semester\IT-Projekt\acs\PrivacyChecker\obj\Debug\PrivacyChecker.csproj.CopyComplete
+C:\Users\borshch\OneDrive - Technische Hochschule Nürnberg Georg Simon Ohm\7. Semester\IT-Projekt\acs\PrivacyChecker\obj\Debug\PrivacyChecker.dll
+C:\Users\borshch\OneDrive - Technische Hochschule Nürnberg Georg Simon Ohm\7. Semester\IT-Projekt\acs\PrivacyChecker\obj\Debug\PrivacyChecker.pdb
